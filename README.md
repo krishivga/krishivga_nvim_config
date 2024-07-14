@@ -51,6 +51,9 @@ Some basic commands that are always useful to remember:
 `ESC` - Exit insert mode
 
 ## Plugins
+Some common problem fixes:
+- If you get some sort of nil value error right after copy pasting a package or editing a config, it's probably because you are missing a comma somehwere.
+
 ### Dracula
 Now, we create a file within the plugins folder for our colorscheme. Personally, I've used dracula and aptly named my file `dracula.lua`. I'll go through the formatting of this one, but most of them are pretty much the same structure. I'll just talk about which packages and why I've used them.
 
@@ -81,4 +84,33 @@ One thing I've done that is sort of different from the generic configuration is 
 
 Note: Sometimes, you need to `:TSEnable highlight` after setup to see the highlights.
 
-###
+### Neo-Tree
+Allows for a filesystem view in Vim. Brilliant stuff.
+
+`Ctrl-n` to view the filesystem. Appears on the right.
+
+If you want to change that, change the `vim.keymap.set('n', '<C-n>', ":Neotree filesystem reveal right<CR>")` right part at the end to a left.
+
+### LuaLine
+Makes the bottom bar in nvim look prettier.
+
+### LSP
+God, this was a nightmare. Probably doing a fresh config because I can't figure out how to properly set up the LSP and autocompletion in tandem with this one.
+
+To manage our lsp, we use `mason.nvim`. On top of this, we use the extension `mason-lspconfig.nvim` to bridge `mason` with `lsp-config`.
+
+`mason-lspconfig` is primarily used for the `ensure_installed` functionality that lets us make sure our LSP servers are installed before anything else, very useful. Instead of having to manually install LSP servers, we can automagically make sure they are installed. Great for fresh configs. 
+
+After we install our LSP(s) through Mason's extension, we want to actually activate/set them up. For this, we use `lsp-config` where we do `lspconfig.LSPNAME.setup({})` for each LSP. I've added a bit more code to allow it to work with the linter and the auto-complete but it doesn't seemt to fit right. 
+
+`Shift-K` - LSP Hover
+`gd` - LSP Go To Definition
+`<space>ca` - Code action. Code actions help us fix certain problems with our code that are highlighted by the LSP. 
+
+### None-ls
+This and the autocomplete, I don't fully understand myself.
+
+`<space>gf` - Linter format
+
+### Markdown Preview
+Preview using `:MarkdownPreview`
