@@ -11,3 +11,30 @@ Nvim
 - init.lua
 
 During the nvim runtime, neovim starts with the first init.lua file. Here, we give instructions on how to load everything and what to load (along with the order, which afaik lazyvim manages). 
+
+Our package manager of choice is lazyvim. We begin by doing a generic installation of Lazy.
+
+```lua
+local lazypath = vim.fn.stdpath("data") .. "lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then 
+	vim.fn.system({
+	"git",
+	"clone",
+	"--filter=blob:none",
+	"https://github.com/folke/lazy.nvim.git",
+	"--branch=stable", -- latest stable release
+	lazypath,
+	})
+end
+
+vim.opt.rtp:prepend(lazypath)
+```
+
+Afterwards, we add `require("lazy").setup("plugins")` to import all the plugins from the plugins folder.
+We can write all the plugins here but that makes it unnecessarily long and complex. Instead, we segment them into modules and lazyvim automatically builds those lua tables into one big plugins table at the end.
+
+Next, we go to the `plugins.lua` file under the `lua` folder and add in
+```lua
+return {
+
+}```
