@@ -6,7 +6,7 @@ The base folder is `~/.config/nvim` with the entirety of the neovim configuratio
 
 Nvim
 - Lua
-- - Plugins
+  - Plugins
   - Plugins.lua
 - init.lua
 
