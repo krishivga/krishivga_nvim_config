@@ -5,7 +5,7 @@ return {
     ft = { "markdown" },
     build = function()
       vim.fn["mkdp#util#install"]()
-      vim.keymap.set('n','<C-s>', ":MarkdownPreview<CR>", {})
+      vim.keymap.set('n','<C-s>', ":MarkdownPreview", {})
     end,
   },
 }
