@@ -1,6 +1,7 @@
 return {
   {
     "williamboman/mason.nvim",
+    opts = { ensure_installed = { "markdownlint-cli2", "markdown-toc" } },
     config = function()
       require("mason").setup()
     end
